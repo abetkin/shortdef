@@ -14,9 +14,9 @@ defmodule S do
 end
 ```
 
-Works **only** in global function definitions (def).
+Works **only** in function definitions, for globally-defined functions (with `def`).
 
-Also lets you define the guards inline:
+You can also define guards inline:
 
 ```elixir
 defmodule M do
@@ -42,9 +42,11 @@ The library is 100% syntactic sugar with 0% semantics.
 
 ## Similar libs
 
+[destructure](https://github.com/danielberkompas/destructure)
+
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
+The package can be installed
 by adding `shortdef` to your list of dependencies in `mix.exs`:
 
 ```elixir
@@ -55,7 +57,5 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/shortdef](https://hexdocs.pm/shortdef).
+Docs can be found at [https://hexdocs.pm/shortdef](https://hexdocs.pm/shortdef).
 
