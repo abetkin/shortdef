@@ -10,8 +10,12 @@ defmodule GuardsTest do
 
   defguard is_char(x) when is_binary(x) and byte_size(x) == 1
 
-  def f2([%{is_char(x)}], {%{y}}) do
+  def f2([%{is_char(x)}], {is_char(y)}) do
     x <> y
+  end
+
+  def is_bounded(is_list(list), len) when is_integer(len) do
+    length(list) < len
   end
 
   test "" do
@@ -21,6 +25,11 @@ defmodule GuardsTest do
   end
 
   test "2" do
-    "fg" = f2([%{x: "f"}], {%{y: "g"}})
+    "fg" = f2([%{x: "f"}], {"g"})
+  end
+
+  test "3" do
+    # FunctionClauseError
+    is_bounded([4], "f")
   end
 end

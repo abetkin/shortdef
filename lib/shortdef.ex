@@ -7,7 +7,9 @@ defmodule ShortDef do
   end
 
   defmacro def(head, body) do
+    head |> IO.inspect(label: :head)
     new_head = transform_head(head)
+    |> IO.inspect(label: :new_head)
 
     quote do
       Kernel.def(unquote(new_head), unquote(body))
@@ -17,25 +19,22 @@ defmodule ShortDef do
   def transform_head({:when, [line: line], [head, condition]}) do
     new_head = transform_head(head)
 
-    condition =
-      case new_head do
-        {:when, [line: _], [_h, c]} ->
-          condition |> merge_condition(c)
+    case new_head do
+      {:when, [line: _], [h, c]} ->
+        c = condition |> merge_condition(c)
+        {:when, [line: line], [h, c]}
 
-        _ ->
-          condition
-      end
-
-    {:when, [line: line], [new_head, condition]}
+      _ ->
+        {:when, [line: line], [new_head, condition]}
+    end
   end
 
   def transform_head(head) do
-    head |> IO.inspect(label: :head)
     {fun_name, [line: line], args} = head
     # transforming a list of args = transforming a single arg that is a list
     {new_args, guards} = transform_arg(args, [])
     new_head = {fun_name, [line: line], new_args}
-    |> IO.inspect(label: :new_head)
+
 
     case guards do
       [] ->
