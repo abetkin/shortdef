@@ -29,7 +29,18 @@ defmodule GuardsTest do
   end
 
   test "3" do
-    # TODO catch FunctionClauseError
-    # is_bounded([4], "f")
+    params = [
+      {0, 0},
+      {[], ""},
+    ]
+    for {list, len} <- params do
+      try do
+        is_bounded(list, len)
+      rescue
+        FunctionClauseError -> :ok
+      else
+        _ -> raise "failed"
+      end
+    end
   end
 end

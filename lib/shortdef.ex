@@ -7,9 +7,8 @@ defmodule ShortDef do
   end
 
   defmacro def(head, body) do
-    head |> IO.inspect(label: :head)
     new_head = transform_head(head)
-    |> IO.inspect(label: :new_head)
+    # |> IO.inspect(label: :new_head)
 
     quote do
       Kernel.def(unquote(new_head), unquote(body))
