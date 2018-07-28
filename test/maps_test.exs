@@ -40,7 +40,7 @@ defmodule DefTest do
 
   use ExUnit.Case
 
-  test "1" do
+  test "" do
     m = %M{x: 1, y: 2}
 
     s1(m)
@@ -64,16 +64,4 @@ defmodule DefTest do
     v4({%{y: [%{z: 1}]}})
   end
 
-end
-
-
-defmodule Test4 do
-  use ExUnit.Case
-  use ShortDef
-
-  def s4(1, y) do end
-
-  test "" do
-    s4(1, 5)
-  end
 end
