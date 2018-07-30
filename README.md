@@ -38,7 +38,7 @@ You can combine these features too:
 def f(%{is_integer(x)}) do
 ```
 
-The library is 100% syntactic sugar with 0% semantics.
+The library is **100% syntactic sugar** with 0% semantics.
 
 ## Similar libs
 
