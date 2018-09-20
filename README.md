@@ -2,7 +2,7 @@
 
 The library adds short syntax for maps as well as in-place guards definitions.
 
-Basically, allows you to write `%{x}` instead of `%{x: x}` and `%MyStruct{x}` instead of
+Basically, this allows you to write `%{x}` instead of `%{x: x}` and `%MyStruct{x}` instead of
 `%MyStruct{x: x}`.
 
 ```elixir
